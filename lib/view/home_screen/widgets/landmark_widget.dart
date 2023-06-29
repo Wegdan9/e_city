@@ -35,8 +35,15 @@ class LandmarkWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(landmark[index].landmarkName!, style: Theme.of(context).textTheme.bodyLarge,),
-            Text(landmark[index].landmarkDescription.toString(), maxLines: 3, overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyMedium,),
+            Hero(
+                tag: 'nameTag ${landmark[index].landmarkName}',
+                child: Text(landmark[index].landmarkName!, style: Theme.of(context).textTheme.bodyLarge,)),
+            SizedBox(height: height * 0.01,),
+            Hero(
+              tag: 'DescTag ${landmark[index].landmarkDescription.toString()}',
+              child: Text(
+                landmark[index].landmarkDescription.toString(), maxLines: 3, overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyMedium,),
+            ),
             Align(
                 alignment: Alignment.bottomLeft,
                 child: IconButton(
@@ -49,18 +56,21 @@ class LandmarkWidget extends StatelessWidget {
           ],
         ),
       ),
-            Container(
-              width: width * 0.3,
-              height: height *0.2,
-              padding: EdgeInsets.all(width * 0.02),
-              margin: EdgeInsets.all(width * 0.02),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  image: DecorationImage(
-                      image: AssetImage(landmark[index].landmarkImagePath[0]),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply)
-                  )
+            Hero(
+              tag: 'imageTag ${landmark[index].landmarkImagePath[0]}',
+              child: Container(
+                width: width * 0.3,
+                height: height *0.2,
+                padding: EdgeInsets.all(width * 0.02),
+                margin: EdgeInsets.all(width * 0.02),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    image: DecorationImage(
+                        image: AssetImage(landmark[index].landmarkImagePath[0]),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply)
+                    )
+                ),
               ),
             ),
           ],

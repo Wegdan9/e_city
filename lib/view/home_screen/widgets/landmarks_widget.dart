@@ -1,5 +1,6 @@
 import 'package:e_city/controller/landmark_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
 import 'landmark_widget.dart';
@@ -14,7 +15,7 @@ class LandmarksWidget extends StatelessWidget {
     return  ListView.builder(
           physics: BouncingScrollPhysics(),
           itemCount: landmarks.getLandmark.length,
-          itemBuilder: (context, index) => LandmarkWidget(index: index,landmark: landmarks.getLandmark,));
+          itemBuilder: (context, index) => LandmarkWidget(index: index,landmark: landmarks.getLandmark,).animate().flip());
 
   }
 }

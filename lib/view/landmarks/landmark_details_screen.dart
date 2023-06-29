@@ -50,11 +50,14 @@ class LandmarkDetailsScreen extends StatelessWidget {
                     autoPlayCurve: Curves.ease
                 ),
                 itemBuilder: (BuildContext context, int index, int realIndex) {
-                  return  ClipRRect(
-                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-                    child: ColorFiltered(
-                        colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
-                        child: Image.asset(landmarkDetails.landmarkImagePath[index], fit: BoxFit.cover,)),
+                  return  Hero(
+                    tag: 'imageTag ${landmarkDetails.landmarkImagePath[index]}',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                      child: ColorFiltered(
+                          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
+                          child: Image.asset(landmarkDetails.landmarkImagePath[index], fit: BoxFit.cover,)),
+                    ),
                   );
                 },
               ),
@@ -77,16 +80,24 @@ class LandmarkDetailsScreen extends StatelessWidget {
 
             ],
           ),
-          Text(landmarkDetails.landmarkName, style: Theme.of(context).textTheme.bodyLarge,),
+          SizedBox(height: height * 0.01,),
+          Hero(
+            tag: 'nameTag ${landmarkDetails.landmarkName}',
+            child: Text(
+              landmarkDetails.landmarkName, style: Theme.of(context).textTheme.bodyLarge,),
+          ),
           SizedBox(height: height * 0.01,),
           Expanded(
             child: Padding(
               padding:  EdgeInsets.all(width * 0.02),
-              child: ListView.builder(
-                  itemCount: landmarkDetails.landmarkDescription.length,
-                  itemBuilder: (context, index) => Text(landmarkDetails.landmarkDescription[index],
-                    textDirection: TextDirection.rtl,
-                    style: Theme.of(context).textTheme.bodyMedium,),
+              child: Hero(
+                tag: 'DescTag ${landmarkDetails.landmarkDescription}',
+                child: ListView.builder(
+                    itemCount: landmarkDetails.landmarkDescription.length,
+                    itemBuilder: (context, index) => Text(landmarkDetails.landmarkDescription[index],
+                      textDirection: TextDirection.rtl,
+                      style: Theme.of(context).textTheme.bodyMedium,),
+                ),
               ),
             ),
           )

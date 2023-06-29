@@ -11,9 +11,9 @@ import 'widgets/trips_widget.dart';
 class HomeScreen extends StatelessWidget {
 
   List<Widget> _tabWidgets =[
-    HomeWidget(),
+    TripsWidget(),
     LandmarksWidget(),
-    TripsWidget()
+    HomeWidget(),
   ];
    HomeScreen({Key? key}) : super(key: key);
 
@@ -25,14 +25,19 @@ class HomeScreen extends StatelessWidget {
 
     return DefaultTabController(
       length: _tabWidgets.length,
+      initialIndex: 2,
       child: Scaffold(
         appBar: AppBar(
           title: Text('المدينة الالكترونية', style: Theme.of(context).textTheme.bodyLarge,),
           centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.dashboard, color: color2,),
-            onPressed: (){},
-          ),
+          actions:[
+            IconButton(
+              icon: Icon(Icons.dashboard, color: color2,),
+              onPressed: (){
+
+              },
+            )
+          ] ,
         ),
           body: Column(
             children: [
@@ -42,24 +47,27 @@ class HomeScreen extends StatelessWidget {
                 labelColor: color2,
                 indicatorColor: color2,
                 labelStyle: Theme.of(context).textTheme.bodyMedium,
-                  tabs:  const [
-                Tab(
+                tabs: [
+
+                    Tab(
+                      icon: Icon(Icons.directions_boat_outlined),
+                      text: 'الرحلات',
+                    ),
+                    Tab(
+                      icon: Icon(Icons.travel_explore_outlined),
+                      text: 'ابرز المعالم',
+                    ),
+                    Tab(
                     icon: Icon(Icons.home_outlined),
                     text:'الرئيسية',
                 ),
-                Tab(
-                    icon: Icon(Icons.travel_explore_outlined),
-                    text: 'ابرز المعالم',
-                ),
-                Tab(
-                    icon: Icon(Icons.directions_boat_outlined),
-                    text: 'الرحلات',
-                ),
+
+
               ]),
                Expanded(
                 child: TabBarView(
                   physics: BouncingScrollPhysics(),
-                    children: [
+                  children: [
                       ..._tabWidgets
                 ]),
               )

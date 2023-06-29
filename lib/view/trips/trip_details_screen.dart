@@ -37,28 +37,31 @@ class TripDetailsScreen extends StatelessWidget {
         children: [
           Stack(
             children: [
-              CarouselSlider.builder(
-                itemCount: tripDetails.tripImagePath.length,
-                options: CarouselOptions(
-                    height: height * 0.45,
-                    autoPlay: true,
-                    viewportFraction: 1,
-                    autoPlayAnimationDuration: Duration(
-                        seconds: 1
-                    ),
-                    disableCenter: true,
-                    // enlargeFactor: 0.5,
-                    enlargeCenterPage: true,
-                    autoPlayCurve: Curves.ease
+              Hero(
+                tag: 'imageTag ${tripDetails.tripImagePath}',
+                child: CarouselSlider.builder(
+                  itemCount: tripDetails.tripImagePath.length,
+                  options: CarouselOptions(
+                      height: height * 0.45,
+                      autoPlay: true,
+                      viewportFraction: 1,
+                      autoPlayAnimationDuration: Duration(
+                          seconds: 1
+                      ),
+                      disableCenter: true,
+                      // enlargeFactor: 0.5,
+                      enlargeCenterPage: true,
+                      autoPlayCurve: Curves.ease
+                  ),
+                  itemBuilder: (BuildContext context, int index, int realIndex) {
+                    return  ClipRRect(
+                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                      child: ColorFiltered(
+                          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
+                          child: Image.asset(tripDetails.tripImagePath[index], fit: BoxFit.cover,)),
+                    );
+                  },
                 ),
-                itemBuilder: (BuildContext context, int index, int realIndex) {
-                  return  ClipRRect(
-                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-                    child: ColorFiltered(
-                        colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
-                        child: Image.asset(tripDetails.tripImagePath[index], fit: BoxFit.cover,)),
-                  );
-                },
               ),
               Positioned(
                 right: width * -0.01,
@@ -78,8 +81,11 @@ class TripDetailsScreen extends StatelessWidget {
               ),
             ],
           ),
+
           SizedBox(height: height * 0.01,),
-          Text(tripDetails.tripName, style: Theme.of(context).textTheme.bodyLarge,),
+          Hero(
+              tag: 'nameTag ${tripDetails.tripName}',
+              child: Text(tripDetails.tripName, style: Theme.of(context).textTheme.bodyLarge,)),
           Align(
             alignment: Alignment.bottomRight,
             child: Container(
@@ -89,18 +95,23 @@ class TripDetailsScreen extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text('التقييم: ${tripDetails.rating}', style: Theme.of(context).textTheme.bodyLarge,),
+              child: Hero(
+                  tag: 'ratingTag ${tripDetails.rating}',
+                  child: Text('التقييم: ${tripDetails.rating}', style: Theme.of(context).textTheme.bodyLarge,)),
             ),
           ),
           SizedBox(height: height * 0.01,),
           Expanded(
             child: Padding(
               padding:  EdgeInsets.all(width * 0.02),
-              child: ListView.builder(
-                itemCount: tripDetails.tripDescription.length,
-                itemBuilder: (context, index) => Text(tripDetails.tripDescription[index],
-                  textDirection: TextDirection.rtl,
-                  style: Theme.of(context).textTheme.bodyMedium,),
+              child: Hero(
+                tag: 'descTag ${tripDetails.tripDescription}',
+                child: ListView.builder(
+                  itemCount: tripDetails.tripDescription.length,
+                  itemBuilder: (context, index) => Text(tripDetails.tripDescription[index],
+                    textDirection: TextDirection.rtl,
+                    style: Theme.of(context).textTheme.bodyMedium,),
+                ),
               ),
             ),
           )

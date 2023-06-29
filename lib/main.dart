@@ -1,6 +1,7 @@
 
 import 'package:e_city/controller/landmark_controller.dart';
 import 'package:e_city/controller/trips_controller.dart';
+import 'package:e_city/splash_screen/splash_screen.dart';
 import 'package:e_city/view/landmarks/landmark_details_screen.dart';
 import 'package:e_city/view/trips/trip_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,16 +34,16 @@ class MyApp extends StatelessWidget{
                 color: color1,
                 fontSize: 22,
                 fontWeight: FontWeight.w900,
-                fontFamily: 'Cairo-Regular',
+                fontFamily: 'Almarai-Regular',
             ),
             bodyMedium: const TextStyle(
                 color: color2,
-                fontSize: 16,
-                fontFamily: 'Cairo-Regular'
+                fontSize: 18,
+                fontFamily: 'Almarai-Regular'
             ),
           )
         ),
-        home: HomeScreen(),
+        home: SplashScreen(),
         routes: {
           LandmarkDetailsScreen.LANDMARK_DETAILS_SCREEN_ROUTE:(context) => LandmarkDetailsScreen(),
           TripDetailsScreen.TRIP_DETAILS_SCREEN_ROUTE:(context) => TripDetailsScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/trips_controller.dart';
@@ -16,7 +17,7 @@ class TripsWidget extends StatelessWidget {
     return  ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: trips.getTrip.length,
-        itemBuilder: (context, index) => TripWidget(index: index,trip: trips.getTrip,));
+        itemBuilder: (context, index) => TripWidget(index: index,trip: trips.getTrip,).animate().flip());
 
   }
 }
