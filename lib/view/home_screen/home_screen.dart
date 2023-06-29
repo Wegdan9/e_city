@@ -1,4 +1,5 @@
 import 'package:e_city/constants/size.dart';
+import 'package:e_city/view/home_screen/widgets/drawer_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -27,17 +28,18 @@ class HomeScreen extends StatelessWidget {
       length: _tabWidgets.length,
       initialIndex: 2,
       child: Scaffold(
+        drawer: DrawerWidget(),
         appBar: AppBar(
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.dashboard, color: color2,),
+            onPressed: (){
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
           title: Text('المدينة الالكترونية', style: Theme.of(context).textTheme.bodyLarge,),
           centerTitle: true,
-          actions:[
-            IconButton(
-              icon: Icon(Icons.dashboard, color: color2,),
-              onPressed: (){
-
-              },
-            )
-          ] ,
         ),
           body: Column(
             children: [

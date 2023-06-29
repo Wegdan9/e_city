@@ -1,5 +1,6 @@
 
 import 'package:e_city/controller/landmark_controller.dart';
+import 'package:e_city/controller/services_controller.dart';
 import 'package:e_city/controller/trips_controller.dart';
 import 'package:e_city/splash_screen/splash_screen.dart';
 import 'package:e_city/view/landmarks/landmark_details_screen.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget{
       providers: [
         ChangeNotifierProvider(create: (context) => LandmarkController(),),
         ChangeNotifierProvider(create: (context) => TripsController(),),
+        ChangeNotifierProvider(create: (context) => ServicesController(),)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

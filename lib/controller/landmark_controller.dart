@@ -60,7 +60,7 @@ class LandmarkController with ChangeNotifier{
         ]),
   ];
 
-  List<Landmark> get getLandmark => _landmark;
+  List<Landmark> get getLandmark => [..._landmark];
 
   Landmark findLandmarkById(int index ){
     return _landmark.elementAt(index);

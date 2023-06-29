@@ -33,7 +33,7 @@ class TripWidget extends StatelessWidget {
                   width: width,
                   margin: EdgeInsets.all(width * 0.02),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+                   // borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
                       colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
                       image: AssetImage(trip[index].tripImagePath[0]),
@@ -81,11 +81,6 @@ class TripWidget extends StatelessWidget {
           Hero(
               tag: 'descTag ${trip[index].tripDescription}',
               child: Text(trip[index].tripDescription.toString(),textDirection: TextDirection.rtl, maxLines: 3,overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.bodyMedium,)),
-          Row(
-            children: [
-
-            ],
-          )
         ],
 
       ),
