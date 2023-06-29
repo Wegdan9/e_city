@@ -1,11 +1,12 @@
 import 'package:e_city/constants/size.dart';
-import 'package:e_city/view/widgets/home_widget.dart';
-import 'package:e_city/view/widgets/landmarks_widget.dart';
-import 'package:e_city/view/widgets/trips_widget.dart';
+
 import 'package:flutter/material.dart';
 
 
-import '../constants/colors.dart';
+import '../../../constants/colors.dart';
+import 'widgets/home_widget.dart';
+import 'widgets/landmarks_widget.dart';
+import 'widgets/trips_widget.dart';
 
 class HomeScreen extends StatelessWidget {
 
