@@ -1,15 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_city/controller/landmark_controller.dart';
+import 'package:e_city/controller/trips_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/size.dart';
 
-class LandmarkDetailsScreen extends StatelessWidget {
-  static final String LANDMARK_DETAILS_SCREEN_ROUTE = '/landmarkScreenRoute';
+class TripDetailsScreen extends StatelessWidget {
 
-   LandmarkDetailsScreen({Key? key}) : super(key: key);
+   static final String TRIP_DETAILS_SCREEN_ROUTE = '/tripDetailsScreenRoute';
+
+   TripDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,8 @@ class LandmarkDetailsScreen extends StatelessWidget {
     double width = SizeConfiguration.screenWidth!;
     double height = SizeConfiguration.screenHeight!;
     final routeArguments = ModalRoute.of(context)!.settings.arguments as Map <String, int>;
-    final landmarkId = routeArguments['landmarkIndex'];
-    final landmarkDetails = Provider.of<LandmarkController>(context, listen: false).findLandmarkById(landmarkId!);
+    final tripIndex = routeArguments['tripIndex'];
+    final tripDetails = Provider.of<TripsController>(context, listen: false).findTripById(tripIndex!);
 
     return Scaffold(
       appBar: AppBar(
@@ -29,14 +30,15 @@ class LandmarkDetailsScreen extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        title: Text(landmarkDetails.landmarkName, style: Theme.of(context).textTheme.bodyLarge,),
+        title: Text(tripDetails.tripName, style: Theme.of(context).textTheme.bodyLarge,),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Stack(
             children: [
               CarouselSlider.builder(
-                itemCount: landmarkDetails.landmarkImagePath.length,
+                itemCount: tripDetails.tripImagePath.length,
                 options: CarouselOptions(
                     height: height * 0.45,
                     autoPlay: true,
@@ -45,7 +47,7 @@ class LandmarkDetailsScreen extends StatelessWidget {
                         seconds: 1
                     ),
                     disableCenter: true,
-                   // enlargeFactor: 0.5,
+                    // enlargeFactor: 0.5,
                     enlargeCenterPage: true,
                     autoPlayCurve: Curves.ease
                 ),
@@ -54,7 +56,7 @@ class LandmarkDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
                     child: ColorFiltered(
                         colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
-                        child: Image.asset(landmarkDetails.landmarkImagePath[index], fit: BoxFit.cover,)),
+                        child: Image.asset(tripDetails.tripImagePath[index], fit: BoxFit.cover,)),
                   );
                 },
               ),
@@ -63,30 +65,42 @@ class LandmarkDetailsScreen extends StatelessWidget {
                 top: width * -0.03,
                 child: Container(
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color4
+                      shape: BoxShape.circle,
+                      color: color4
                   ),
                   child: IconButton(
-                      icon: Icon(Icons.favorite_border,size: 30,),
-                      color: color1,
+                    icon: Icon(Icons.favorite_border,size: 30,),
+                    color: color1,
 
-                      onPressed: (){},
-                    ),
+                    onPressed: (){},
+                  ),
                 ),
               ),
-
             ],
           ),
-          Text(landmarkDetails.landmarkName, style: Theme.of(context).textTheme.bodyLarge,),
+          SizedBox(height: height * 0.01,),
+          Text(tripDetails.tripName, style: Theme.of(context).textTheme.bodyLarge,),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Container(
+              padding: EdgeInsets.all(width * 0.01),
+              decoration: BoxDecoration(
+                color: color3,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text('التقييم: ${tripDetails.rating}', style: Theme.of(context).textTheme.bodyLarge,),
+            ),
+          ),
           SizedBox(height: height * 0.01,),
           Expanded(
             child: Padding(
               padding:  EdgeInsets.all(width * 0.02),
               child: ListView.builder(
-                  itemCount: landmarkDetails.landmarkDescription.length,
-                  itemBuilder: (context, index) => Text(landmarkDetails.landmarkDescription[index],
-                    textDirection: TextDirection.rtl,
-                    style: Theme.of(context).textTheme.bodyMedium,),
+                itemCount: tripDetails.tripDescription.length,
+                itemBuilder: (context, index) => Text(tripDetails.tripDescription[index],
+                  textDirection: TextDirection.rtl,
+                  style: Theme.of(context).textTheme.bodyMedium,),
               ),
             ),
           )
@@ -95,5 +109,5 @@ class LandmarkDetailsScreen extends StatelessWidget {
       ),
 
     );
-  }
+    }
 }

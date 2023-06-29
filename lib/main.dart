@@ -1,6 +1,8 @@
 
 import 'package:e_city/controller/landmark_controller.dart';
+import 'package:e_city/controller/trips_controller.dart';
 import 'package:e_city/view/landmarks/landmark_details_screen.dart';
+import 'package:e_city/view/trips/trip_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget{
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LandmarkController(),),
+        ChangeNotifierProvider(create: (context) => TripsController(),),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -42,6 +45,7 @@ class MyApp extends StatelessWidget{
         home: HomeScreen(),
         routes: {
           LandmarkDetailsScreen.LANDMARK_DETAILS_SCREEN_ROUTE:(context) => LandmarkDetailsScreen(),
+          TripDetailsScreen.TRIP_DETAILS_SCREEN_ROUTE:(context) => TripDetailsScreen(),
 
         },
 
