@@ -44,6 +44,7 @@ class TripDetailsScreen extends StatelessWidget {
                   options: CarouselOptions(
                       height: height * 0.45,
                       autoPlay: true,
+                      scrollPhysics: BouncingScrollPhysics(),
                       viewportFraction: 1,
                       autoPlayAnimationDuration: Duration(
                           seconds: 1
@@ -55,7 +56,7 @@ class TripDetailsScreen extends StatelessWidget {
                   ),
                   itemBuilder: (BuildContext context, int index, int realIndex) {
                     return  ClipRRect(
-                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                      borderRadius: BorderRadius.circular(12),
                       child: ColorFiltered(
                           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
                           child: Image.asset(tripDetails.tripImagePath[index], fit: BoxFit.cover,)),
@@ -65,24 +66,22 @@ class TripDetailsScreen extends StatelessWidget {
               ),
               Positioned(
                 right: width * -0.01,
-                top: width * -0.03,
+                bottom: width * -0.03,
                 child: Container(
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: color4
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.favorite_border,size: 30,),
-                    color: color1,
-
-                    onPressed: (){},
+                    icon: Icon(Icons.favorite_border,size: 30, color: color2,),
+                    onPressed: (){
+                      
+                    },
                   ),
                 ),
               ),
             ],
           ),
-
-          SizedBox(height: height * 0.01,),
           Hero(
               tag: 'nameTag ${tripDetails.tripName}',
               child: Text(tripDetails.tripName, style: Theme.of(context).textTheme.bodyLarge,)),
@@ -114,7 +113,8 @@ class TripDetailsScreen extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+
 
         ],
       ),

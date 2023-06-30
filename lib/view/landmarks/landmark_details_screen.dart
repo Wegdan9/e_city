@@ -53,7 +53,7 @@ class LandmarkDetailsScreen extends StatelessWidget {
                   return  Hero(
                     tag: 'imageTag ${landmarkDetails.landmarkImagePath[index]}',
                     child: ClipRRect(
-                      borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                      borderRadius: BorderRadius.circular(12),
                       child: ColorFiltered(
                           colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
                           child: Image.asset(landmarkDetails.landmarkImagePath[index], fit: BoxFit.cover,)),
@@ -63,16 +63,14 @@ class LandmarkDetailsScreen extends StatelessWidget {
               ),
               Positioned(
                 right: width * -0.01,
-                top: width * -0.03,
+                bottom: width * -0.03,
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: color4
                   ),
                   child: IconButton(
-                      icon: Icon(Icons.favorite_border,size: 30,),
-                      color: color1,
-
+                      icon: Icon(Icons.favorite_border,size: 30,color: color2),
                       onPressed: (){},
                     ),
                 ),

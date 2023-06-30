@@ -33,13 +33,13 @@ class MyApp extends StatelessWidget{
           canvasColor: color4,
           textTheme: ThemeData.light().textTheme.copyWith(
             bodyLarge: const TextStyle(
-                color: color1,
+                color: color2,
                 fontSize: 22,
                 fontWeight: FontWeight.w900,
                 fontFamily: 'Almarai-Regular',
             ),
             bodyMedium: const TextStyle(
-                color: color2,
+                color: color1,
                 fontSize: 18,
                 fontFamily: 'Almarai-Regular'
             ),

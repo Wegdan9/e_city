@@ -42,12 +42,12 @@ class LandmarkWidget extends StatelessWidget {
             Hero(
               tag: 'DescTag ${landmark[index].landmarkDescription.toString()}',
               child: Text(
-                landmark[index].landmarkDescription.toString(), maxLines: 3, overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyMedium,),
+                landmark[index].landmarkDescription.toString(), textDirection: TextDirection.rtl,maxLines: 3, overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyMedium,),
             ),
             Align(
                 alignment: Alignment.bottomLeft,
                 child: IconButton(
-                  icon: Icon(Icons.favorite_border, color: color1),
+                  icon: Icon(Icons.favorite_border, color: color2),
                   onPressed: (){
 
                   },

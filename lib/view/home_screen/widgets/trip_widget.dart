@@ -29,11 +29,11 @@ class TripWidget extends StatelessWidget {
               Hero(
                 tag: 'imageTag ${trip[index].tripImagePath}',
                 child: Container(
+                  margin: EdgeInsets.all(width * 0.02),
                   height: height * 0.5,
                   width: width,
-                  margin: EdgeInsets.all(width * 0.02),
                   decoration: BoxDecoration(
-                   // borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
                     image: DecorationImage(
                       colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.1), BlendMode.multiply),
                       image: AssetImage(trip[index].tripImagePath[0]),
@@ -42,45 +42,40 @@ class TripWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                right: width * 0.01,
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: color4
-                  ),
-                  child: IconButton(
-                    icon:Icon(Icons.favorite_border, size: 30, color: color1,),
-                    onPressed: (){},),
-                ),
-              ),
-              Positioned(
-                left: width * 0.01,
-                top: width * 0.01,
-                child: Container(
-                  padding: EdgeInsets.all(width * 0.01),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(12),
-                      color: color4
-                  ),
-                  child: Hero(
-                      tag: 'ratingTag ${trip[index].rating}',
-                      child: Text('${trip[index].rating}', style: Theme.of(context).textTheme.bodyLarge,)),
-                ),
-              ),
 
             ],
           ),
           Hero(
               tag: 'nameTag ${trip[index].tripName}',
               child: Text(trip[index].tripName, style: Theme.of(context).textTheme.bodyLarge,)),
-          SizedBox(height: height * 0.01,),
-          Divider(height: 1,color: color1, thickness: 1,indent: width * 0.1, endIndent: width * 0.1,),
-          SizedBox(height: height * 0.01,),
           Hero(
               tag: 'descTag ${trip[index].tripDescription}',
               child: Text(trip[index].tripDescription.toString(),textDirection: TextDirection.rtl, maxLines: 3,overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.bodyMedium,)),
+          SizedBox(height: height * 0.01,),
+          IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  icon:Icon(Icons.favorite_border, size: 30, color: color2,),
+                  onPressed: (){},),
+                VerticalDivider(
+                  thickness: 1,
+                  color: color2,
+                  width: 2,
+                ),
+                Hero(
+                  tag: 'ratingTag ${trip[index].rating}',
+                  child: Row(
+                    children: [
+                      Text('${trip[index].rating}', style: Theme.of(context).textTheme.bodyLarge,),
+                      Icon(Icons.star_border_purple500_outlined, size: 30, color: color2,),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
 
       ),

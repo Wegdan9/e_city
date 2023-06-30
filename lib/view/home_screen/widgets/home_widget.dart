@@ -79,7 +79,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           ).animate().slideX(),
           SizedBox(height: height * 0.01,),
           Text(
-            'تعد شرم الشيخ من الاماكن الجذابة في العالم حيث تقع علي خليج العقبة والتي تبعد حوالي 300 كم عن محمية رأس محمد الوطنية بالاضاافة الي ذلك احتوائها علي افشل الاماكن السياحية.',
+            'تعد شرم الشيخ من الاماكن الجذابة في العالم حيث تقع علي خليج العقبة والتي تبعد حوالي 300 كم عن محمية رأس محمد الوطنية بالاضافة الي ذلك احتوائها علي افضل الاماكن السياحية.',
             textDirection: TextDirection.rtl,
             style: Theme.of(context).textTheme.bodyMedium,
           ).animate().slideX(),

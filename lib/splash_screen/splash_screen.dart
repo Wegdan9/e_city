@@ -29,7 +29,7 @@ class SplashScreen extends StatelessWidget {
               decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
-                  image: DecorationImage(image: AssetImage('assets/images/city_1068531.png'),),
+                  image: DecorationImage(image: AssetImage('assets/images/smart-city.png'),),
               ),
             ),
             Text('المدينة الالكترونية', style: Theme.of(context).textTheme.bodyLarge,)
