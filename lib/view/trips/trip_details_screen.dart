@@ -1,16 +1,26 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_city/controller/trips_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/size.dart';
 
-class TripDetailsScreen extends StatelessWidget {
+class TripDetailsScreen extends StatefulWidget {
 
    static final String TRIP_DETAILS_SCREEN_ROUTE = '/tripDetailsScreenRoute';
 
    TripDetailsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TripDetailsScreen> createState() => _TripDetailsScreenState();
+}
+
+class _TripDetailsScreenState extends State<TripDetailsScreen> {
+
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +29,7 @@ class TripDetailsScreen extends StatelessWidget {
     double height = SizeConfiguration.screenHeight!;
     final tripIndex = ModalRoute.of(context)!.settings.arguments as int;
     final tripDetails = Provider.of<TripsController>(context, listen: false).findTripById(tripIndex);
-    final imageHeight = height * 0.45;
+    final imageHeight = height * 0.5;
 
     return Scaffold(
       appBar: AppBar(
@@ -53,7 +63,8 @@ class TripDetailsScreen extends StatelessWidget {
                     disableCenter: true,
                     // enlargeFactor: 0.5,
                     enlargeCenterPage: true,
-                    autoPlayCurve: Curves.ease
+                    autoPlayCurve: Curves.ease,
+                    onPageChanged: (index, reason) => setState((){currentIndex = index;}),
                 ),
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   return  ColorFiltered(
@@ -80,6 +91,17 @@ class TripDetailsScreen extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+            top: imageHeight * 0.8,
+            left: 0,
+            right: 0,
+              child: DotsIndicator(
+                dotsCount: tripDetails.tripImagePath.length,
+                position: currentIndex,
+                decorator: DotsDecorator(
+                  activeColor: color2,
+                ),
+              )),
           Positioned(
             top: imageHeight * 0.95,
             left: 0,

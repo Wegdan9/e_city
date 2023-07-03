@@ -7,12 +7,18 @@ import 'package:provider/provider.dart';
 import '../../constants/colors.dart';
 import '../../constants/size.dart';
 
-class LandmarkDetailsScreen extends StatelessWidget {
+class LandmarkDetailsScreen extends StatefulWidget {
   static final String LANDMARK_DETAILS_SCREEN_ROUTE = '/landmarkScreenRoute';
 
    LandmarkDetailsScreen({Key? key}) : super(key: key);
 
-    //int currentIndex = 0;
+  @override
+  State<LandmarkDetailsScreen> createState() => _LandmarkDetailsScreenState();
+}
+
+class _LandmarkDetailsScreenState extends State<LandmarkDetailsScreen> {
+
+    int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     SizeConfiguration().init(context);
@@ -42,6 +48,11 @@ class LandmarkDetailsScreen extends StatelessWidget {
             child: CarouselSlider.builder(
               itemCount: landmarkDetails.landmarkImagePath.length,
               options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
                   height: imageHeight,
                   autoPlay: true,
                   viewportFraction: 1,
@@ -53,10 +64,8 @@ class LandmarkDetailsScreen extends StatelessWidget {
                   enlargeCenterPage: true,
                   autoPlayCurve: Curves.ease
               ),
-              itemBuilder: (BuildContext context, int index, int realIndex) {
 
-                //currentIndex =landmarkDetails.landmarkImagePath.indexOf(landmarkDetails.landmarkImagePath[index]);
-                //print(landmarkDetails.landmarkImagePath.indexOf(landmarkDetails.landmarkImagePath[index]));
+              itemBuilder: (BuildContext context, int index, int realIndex) {
                 return  Hero(
                   tag: 'imageTag ${landmarkDetails.landmarkImagePath[index]}',
                   child: ColorFiltered(
@@ -81,15 +90,18 @@ class LandmarkDetailsScreen extends StatelessWidget {
                 ),
             ),
           ),
-          // Positioned(
-          //     top: height * 0.35 ,
-          //     right: 0,
-          //     left: 0,
-          //     child: DotsIndicator(
-          //       dotsCount: landmarkDetails.landmarkImagePath.length,
-          //       position: currentIndex,
-          //     ),
-          // ),
+          Positioned(
+              top: imageHeight * 0.8 ,
+              right: 0,
+              left: 0,
+              child: DotsIndicator(
+                dotsCount: landmarkDetails.landmarkImagePath.length,
+                position: currentIndex,
+                decorator: DotsDecorator(
+                  activeColor: color2
+                ),
+              ),
+          ),
           Positioned(
             top: imageHeight * 0.95,
             bottom: 0,

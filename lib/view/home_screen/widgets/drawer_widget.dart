@@ -27,11 +27,13 @@ class DrawerWidget extends StatelessWidget {
           child: Column(
             children: [
               SizedBox( height: services.getServices[index].serviceIcon == null ? height * 0.05 : height * 0.03,),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(services.getServices[index].serviceName!, style: Theme.of(context).textTheme.bodyLarge,),
+                  Text(services.getServices[index].serviceName!, style:
+              services.getServices[index].serviceIcon == null
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : Theme.of(context).textTheme.bodyMedium,),
                   SizedBox(width: width * 0.01,),
                   Icon(services.getServices[index].serviceIcon, color: color1,),
                 ],

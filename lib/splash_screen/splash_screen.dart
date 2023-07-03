@@ -32,7 +32,7 @@ class SplashScreen extends StatelessWidget {
                   image: DecorationImage(image: AssetImage('assets/images/smart-city.png'),),
               ),
             ),
-            Text('المدينة الالكترونية', style: Theme.of(context).textTheme.bodyLarge,)
+            Text('المدينة الإلكترونية', style: Theme.of(context).textTheme.bodyLarge,)
           ],
         ),
 
