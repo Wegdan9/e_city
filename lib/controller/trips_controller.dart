@@ -89,7 +89,7 @@ class TripsController with ChangeNotifier{
 
   List<Trip> get getTrip => [..._trip];
 
-  Trip findTripById(int index ){
+  Trip findTripById(int index){
     return _trip.elementAt(index);
   }
 }

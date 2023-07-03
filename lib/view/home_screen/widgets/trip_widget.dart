@@ -18,9 +18,9 @@ class TripWidget extends StatelessWidget {
     double height = SizeConfiguration.screenHeight!;
     return InkWell(
       onTap: (){
-        Navigator.of(context).pushNamed(TripDetailsScreen.TRIP_DETAILS_SCREEN_ROUTE, arguments: {
-          'tripIndex':index
-        });
+        Navigator.of(context).pushNamed(TripDetailsScreen.TRIP_DETAILS_SCREEN_ROUTE, arguments:
+          index
+        );
       },
       child: Column(
         children: [

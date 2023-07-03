@@ -48,27 +48,22 @@ class _HomeWidgetState extends State<HomeWidget> {
               Container(
                 height: height * 0.4,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(width * 0.02),
                 ),
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(width * 0.02),
                     child: VideoPlayer(controller!)),
               ),
               Positioned(
                 bottom:width * 0.1,
                 left: 0,
-                right: 0,
-                child: Row(
-                  children: [
-                    IconButton(
-                        icon: Icon(controller!.value.isPlaying ? Icons.stop_circle : Icons.play_circle, size: width * 0.18,color: color2,),
-                        onPressed: (){
-                          setState(() {
-                            controller!.value.isPlaying ? controller!.pause() : controller!.play();
-                          });
-                        }, ),
-                  ],
-                ),
+                child: IconButton(
+                    icon: Icon(controller!.value.isPlaying ? Icons.stop_circle : Icons.play_circle, size: width * 0.18,color: color2,),
+                    onPressed: (){
+                      setState(() {
+                        controller!.value.isPlaying ? controller!.pause() : controller!.play();
+                      });
+                    }, ),
               ),
             ],
           ).animate().shimmer(duration: Duration(seconds: 1)),

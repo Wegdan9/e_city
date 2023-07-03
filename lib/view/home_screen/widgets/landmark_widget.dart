@@ -19,9 +19,9 @@ class LandmarkWidget extends StatelessWidget {
 
     return InkWell(
       onTap: (){
-        Navigator.of(context).pushNamed(LandmarkDetailsScreen.LANDMARK_DETAILS_SCREEN_ROUTE, arguments: {
-        'landmarkIndex': index
-        });
+        Navigator.of(context).pushNamed(LandmarkDetailsScreen.LANDMARK_DETAILS_SCREEN_ROUTE, arguments:
+         index
+        );
       },
       child: Container(
         padding: EdgeInsets.all(width * 0.01),
