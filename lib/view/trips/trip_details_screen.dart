@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import '../../constants/colors.dart';
 import '../../constants/size.dart';
 
+
+/// Why Stateful ? Because of Carousel.
 class TripDetailsScreen extends StatefulWidget {
 
    static final String TRIP_DETAILS_SCREEN_ROUTE = '/tripDetailsScreenRoute';
@@ -21,6 +23,7 @@ class TripDetailsScreen extends StatefulWidget {
 class _TripDetailsScreenState extends State<TripDetailsScreen> {
 
   int currentIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +86,15 @@ class _TripDetailsScreenState extends State<TripDetailsScreen> {
                   shape: BoxShape.circle,
                   color: color4
               ),
-              child: IconButton(
-                icon: Icon(Icons.favorite_border,size: 30, color: color2,),
-                onPressed: (){
-
-                },
+              child: Consumer<TripsController>(
+                builder: (context, consTrip, child) => IconButton(
+                  icon: Icon(consTrip.get_IsFavorite ? Icons.favorite :Icons.favorite_border,size: 30, color: Colors.red,),
+                  onPressed: (){
+                    setState(() {
+                      consTrip.toggleFavorite();
+                    });
+                  },
+                ),
               ),
             ),
           ),

@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 import '../../constants/colors.dart';
 import '../../constants/size.dart';
 
+
+/// Why Stateful ? Because of Carousel.
 class LandmarkDetailsScreen extends StatefulWidget {
   static final String LANDMARK_DETAILS_SCREEN_ROUTE = '/landmarkScreenRoute';
 
@@ -27,6 +29,7 @@ class _LandmarkDetailsScreenState extends State<LandmarkDetailsScreen> {
     final landmarkId = ModalRoute.of(context)!.settings.arguments as int;
     final landmarkDetails = Provider.of<LandmarkController>(context, listen: false).findLandmarkById(landmarkId!);
     final imageHeight = height * 0.45;
+
 
     return Scaffold(
       appBar: AppBar(
@@ -84,10 +87,16 @@ class _LandmarkDetailsScreenState extends State<LandmarkDetailsScreen> {
                 shape: BoxShape.circle,
                 color: color4
               ),
-              child: IconButton(
-                  icon: Icon(Icons.favorite_border,size: 30,color: color2),
-                  onPressed: (){},
+              child: Consumer<LandmarkController>(
+                builder: (context, consLandmark, child) => IconButton(
+                  icon: Icon( Icons.favorite_border,size: 30,color: Colors.red),
+                  onPressed: (){
+                    setState(() {
+
+                    });
+                  },
                 ),
+              ),
             ),
           ),
           Positioned(
@@ -130,7 +139,8 @@ class _LandmarkDetailsScreenState extends State<LandmarkDetailsScreen> {
                             itemCount: landmarkDetails.landmarkDescription.length,
                             itemBuilder: (context, index) => Text(landmarkDetails.landmarkDescription[index],
                               textDirection: TextDirection.rtl,
-                              style: Theme.of(context).textTheme.bodyMedium,),
+                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              ),),
                           ),
                         ),
                       ),

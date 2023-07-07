@@ -1,6 +1,8 @@
+import 'package:e_city/controller/trips_controller.dart';
 import 'package:e_city/model/trip.dart';
 import 'package:e_city/view/trips/trip_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants/colors.dart';
 import '../../../constants/size.dart';
@@ -56,9 +58,21 @@ class TripWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(
-                  icon:Icon(Icons.favorite_border, size: 30, color: color2,),
-                  onPressed: (){},),
+                Consumer<TripsController>(
+                  builder: (context, consTrip, child) => IconButton(
+                    icon: Icon(
+                      consTrip.get_IsFavorite
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                      size: 30,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {
+                      consTrip.toggleFavorite();
+                      //consTrip.get_IsFavorite;
+                    },
+                  ),
+                ),
                 VerticalDivider(
                   thickness: 1,
                   color: color2,
@@ -69,7 +83,7 @@ class TripWidget extends StatelessWidget {
                   child: Row(
                     children: [
                       Text('${trip[index].rating}', style: Theme.of(context).textTheme.bodyLarge,),
-                      Icon(Icons.star_border_purple500_outlined, size: 30, color: color2,),
+                      Icon(Icons.star_border_purple500_outlined, size: 30, color: Colors.amberAccent,),
                     ],
                   ),
                 ),

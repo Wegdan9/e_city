@@ -6,6 +6,7 @@ import '../model/landmark.dart';
 
 class LandmarkController with ChangeNotifier{
 
+  //bool _isFavorite = false;
   final List<Landmark> _landmark =  [
     Landmark(
         landmarkId: 'landmark1',
@@ -30,7 +31,10 @@ class LandmarkController with ChangeNotifier{
           'assets/images/dive2.webp',
           'assets/images/dive3.webp',
           'assets/images/dive4.webp'
-        ]),
+        ],
+    //  isFavorite: false
+
+    ),
     Landmark(
         landmarkId: 'landmark2',
         landmarkName: 'التزحلق علي الماء',
@@ -46,7 +50,9 @@ class LandmarkController with ChangeNotifier{
           'assets/images/skiing1.png',
           'assets/images/skiing2.png',
           'assets/images/skiing3.png'
-        ]),
+        ],
+      //  isFavorite: false
+    ),
     Landmark(
         landmarkId: 'landmark2',
         landmarkName: 'الابحار بالمظلات',
@@ -57,10 +63,13 @@ class LandmarkController with ChangeNotifier{
         landmarkImagePath: [
           'assets/images/parasailing1.jpg',
           'assets/images/parasailing2.jpg'
-        ]),
+        ],
+       // isFavorite: false
+    ),
   ];
 
   List<Landmark> get getLandmark => [..._landmark];
+
 
   Landmark findLandmarkById(int index ){
     return _landmark.elementAt(index);

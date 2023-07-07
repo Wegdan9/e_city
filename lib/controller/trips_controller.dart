@@ -3,6 +3,8 @@ import '../model/trip.dart';
 
 class TripsController with ChangeNotifier{
 
+
+  bool _isFavorite = false;
   final List<Trip> _trip =  [
         Trip(tripId: 'trip1',
             tripName: 'الشواطئ في شرم الشيخ',
@@ -87,7 +89,14 @@ class TripsController with ChangeNotifier{
         ),
   ];
 
+
   List<Trip> get getTrip => [..._trip];
+  bool get get_IsFavorite => _isFavorite;
+
+  void toggleFavorite(){
+    _isFavorite = !_isFavorite;
+    notifyListeners();
+  }
 
   Trip findTripById(int index){
     return _trip.elementAt(index);

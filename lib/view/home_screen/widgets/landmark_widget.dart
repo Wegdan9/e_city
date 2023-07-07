@@ -1,12 +1,14 @@
+import 'package:e_city/controller/landmark_controller.dart';
 import 'package:e_city/view/landmarks/landmark_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../constants/colors.dart';
 import '../../../constants/size.dart';
 import '../../../model/landmark.dart';
 
 
 class LandmarkWidget extends StatelessWidget {
+
   int index;
   List<Landmark> landmark;
    LandmarkWidget({Key? key, required this.index, required this.landmark}) : super(key: key);
@@ -47,11 +49,11 @@ class LandmarkWidget extends StatelessWidget {
             Align(
                 alignment: Alignment.bottomLeft,
                 child: IconButton(
-                  icon: Icon(Icons.favorite_border, color: color2),
+                  icon: Icon(Icons.favorite_border, color: Colors.red),
                   onPressed: (){
 
                   },
-                )
+                ),
             ),
           ],
         ),
