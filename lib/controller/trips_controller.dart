@@ -94,7 +94,7 @@ class TripsController with ChangeNotifier{
   bool get get_IsFavorite => _isFavorite;
 
   void toggleFavorite(){
-    _isFavorite = !_isFavorite;
+      _isFavorite = !_isFavorite;
     notifyListeners();
   }
 

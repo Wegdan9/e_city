@@ -6,7 +6,7 @@ import '../model/landmark.dart';
 
 class LandmarkController with ChangeNotifier{
 
-  //bool _isFavorite = false;
+  bool _isFavorite = false;
   final List<Landmark> _landmark =  [
     Landmark(
         landmarkId: 'landmark1',
@@ -70,6 +70,13 @@ class LandmarkController with ChangeNotifier{
 
   List<Landmark> get getLandmark => [..._landmark];
 
+
+  bool get getIsFavorite => _isFavorite;
+
+  void toggleFavorite(){
+    _isFavorite = !_isFavorite;
+    notifyListeners();
+  }
 
   Landmark findLandmarkById(int index ){
     return _landmark.elementAt(index);

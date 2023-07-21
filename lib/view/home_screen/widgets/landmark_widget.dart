@@ -29,12 +29,11 @@ class LandmarkWidget extends StatelessWidget {
         padding: EdgeInsets.all(width * 0.01),
         margin: EdgeInsets.all(width * 0.01),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
         Expanded(
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Hero(
@@ -46,15 +45,15 @@ class LandmarkWidget extends StatelessWidget {
               child: Text(
                 landmark[index].landmarkDescription.toString(), textDirection: TextDirection.rtl,maxLines: 3, overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.bodyMedium,),
             ),
-            Align(
-                alignment: Alignment.bottomLeft,
-                child: IconButton(
-                  icon: Icon(Icons.favorite_border, color: Colors.red),
-                  onPressed: (){
-
-                  },
-                ),
-            ),
+            // Align(
+            //     alignment: Alignment.bottomLeft,
+            //     child: IconButton(
+            //       icon: Icon(Icons.favorite_border, color: Colors.red),
+            //       onPressed: (){
+            //
+            //       },
+            //     ),
+            // ),
           ],
         ),
       ),

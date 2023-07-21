@@ -89,10 +89,10 @@ class _LandmarkDetailsScreenState extends State<LandmarkDetailsScreen> {
               ),
               child: Consumer<LandmarkController>(
                 builder: (context, consLandmark, child) => IconButton(
-                  icon: Icon( Icons.favorite_border,size: 30,color: Colors.red),
+                  icon: Icon(consLandmark.getIsFavorite ? Icons.favorite :Icons.favorite_border,size: 30,color: Colors.red),
                   onPressed: (){
                     setState(() {
-
+                      consLandmark.toggleFavorite();
                     });
                   },
                 ),
